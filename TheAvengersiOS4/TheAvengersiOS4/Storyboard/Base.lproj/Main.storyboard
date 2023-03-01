@@ -1,24 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oG2-ty-UnP">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Avengers List-->
+        <scene sceneID="ziQ-Um-uUR">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="pNH-iS-Idr" customClass="CharacterListViewController" customModule="TheAvengersiOS4" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EEG-Az-2tR">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avengers" translatesAutoresizingMaskIntoConstraints="NO" id="2Vv-ec-EBb">
+                                <rect key="frame" x="0.0" y="108" width="393" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="csE-NQ-Fic"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="krT-9z-5cc">
+                                <rect key="frame" x="0.0" y="236" width="393" height="582"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="characterCell" id="pVV-CC-X5o">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pVV-CC-X5o" id="iO2-aj-gFM">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="ALK-iu-OCi" kind="show" identifier="characterDetailVC" id="2WI-Ko-xGf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="trc-ea-MOj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2Vv-ec-EBb" firstAttribute="top" secondItem="trc-ea-MOj" secondAttribute="top" constant="5" id="8hI-nE-hhd"/>
+                            <constraint firstItem="trc-ea-MOj" firstAttribute="trailing" secondItem="krT-9z-5cc" secondAttribute="trailing" id="J9F-ZQ-omU"/>
+                            <constraint firstItem="trc-ea-MOj" firstAttribute="bottom" secondItem="krT-9z-5cc" secondAttribute="bottom" id="VUU-Fa-Vyb"/>
+                            <constraint firstItem="2Vv-ec-EBb" firstAttribute="leading" secondItem="trc-ea-MOj" secondAttribute="leading" id="Vsb-s8-ip7"/>
+                            <constraint firstItem="krT-9z-5cc" firstAttribute="leading" secondItem="trc-ea-MOj" secondAttribute="leading" id="g6P-fd-dP1"/>
+                            <constraint firstItem="krT-9z-5cc" firstAttribute="top" secondItem="2Vv-ec-EBb" secondAttribute="bottom" id="hV3-U4-fIH"/>
+                            <constraint firstItem="trc-ea-MOj" firstAttribute="trailing" secondItem="2Vv-ec-EBb" secondAttribute="trailing" id="zea-Dc-l0h"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Avengers List" id="cAH-6n-er1"/>
+                    <connections>
+                        <outlet property="characterListTableView" destination="krT-9z-5cc" id="Aai-QB-gge"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LJx-Gx-ScA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1041.9847328244275" y="-4.2253521126760569"/>
+        </scene>
+        <!--Character Detail View Controller-->
+        <scene sceneID="McV-MH-b7j">
+            <objects>
+                <viewController id="ALK-iu-OCi" customClass="CharacterDetailViewController" customModule="TheAvengersiOS4" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0bx-rt-vR1">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="kRC-Wt-QdW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="KyY-pC-Jbo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lXi-4U-8Em" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1955" y="-4"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ACu-M2-iku">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oG2-ty-UnP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aCP-4c-EJc">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pNH-iS-Idr" kind="relationship" relationship="rootViewController" id="tqo-eP-6bz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ida-aL-MOS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="115.26717557251908" y="-4.2253521126760569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="avengers" width="423" height="119"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

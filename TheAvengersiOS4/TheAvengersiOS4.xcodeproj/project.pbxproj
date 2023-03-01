@@ -12,6 +12,10 @@
 		34C3B1DD29AFF2AD00B1B295 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34C3B1DB29AFF2AD00B1B295 /* Main.storyboard */; };
 		34C3B1DF29AFF2B000B1B295 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34C3B1DE29AFF2B000B1B295 /* Assets.xcassets */; };
 		34C3B1E229AFF2B000B1B295 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34C3B1E029AFF2B000B1B295 /* LaunchScreen.storyboard */; };
+		34C3B1ED29AFF4AE00B1B295 /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3B1EC29AFF4AE00B1B295 /* CharacterListViewController.swift */; };
+		34C3B1EF29AFF60100B1B295 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3B1EE29AFF60100B1B295 /* CharacterDetailViewController.swift */; };
+		34C3B1F329AFF69400B1B295 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3B1F229AFF69400B1B295 /* Constants.swift */; };
+		34C3B1F529AFF6FC00B1B295 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3B1F429AFF6FC00B1B295 /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		34C3B1DE29AFF2B000B1B295 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34C3B1E129AFF2B000B1B295 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34C3B1E329AFF2B000B1B295 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34C3B1EC29AFF4AE00B1B295 /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
+		34C3B1EE29AFF60100B1B295 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
+		34C3B1F229AFF69400B1B295 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		34C3B1F429AFF6FC00B1B295 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,9 @@
 		34C3B1D429AFF2AD00B1B295 /* TheAvengersiOS4 */ = {
 			isa = PBXGroup;
 			children = (
+				34C3B1F129AFF67700B1B295 /* Networking */,
+				34C3B1F029AFF67000B1B295 /* Model */,
+				34C3B1EB29AFF48D00B1B295 /* ViewControllers */,
 				34C3B1EA29AFF30600B1B295 /* Storyboard */,
 				34C3B1E929AFF2D100B1B295 /* SupportingFiles */,
 			);
@@ -78,6 +89,31 @@
 				34C3B1DB29AFF2AD00B1B295 /* Main.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		34C3B1EB29AFF48D00B1B295 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				34C3B1EC29AFF4AE00B1B295 /* CharacterListViewController.swift */,
+				34C3B1EE29AFF60100B1B295 /* CharacterDetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		34C3B1F029AFF67000B1B295 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		34C3B1F129AFF67700B1B295 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				34C3B1F229AFF69400B1B295 /* Constants.swift */,
+				34C3B1F429AFF6FC00B1B295 /* NetworkError.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,7 +187,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34C3B1F329AFF69400B1B295 /* Constants.swift in Sources */,
 				34C3B1D629AFF2AD00B1B295 /* AppDelegate.swift in Sources */,
+				34C3B1EF29AFF60100B1B295 /* CharacterDetailViewController.swift in Sources */,
+				34C3B1F529AFF6FC00B1B295 /* NetworkError.swift in Sources */,
+				34C3B1ED29AFF4AE00B1B295 /* CharacterListViewController.swift in Sources */,
 				34C3B1D829AFF2AD00B1B295 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
