@@ -1,5 +1,5 @@
 //
-//  Characters.swift
+//  CharactersList.swift
 //  TheAvengersiOS4
 //
 //  Created by Matthew Hill on 3/1/23.
@@ -7,13 +7,12 @@
 
 import Foundation
 
-struct CharacterTopLevelDictionary: Decodable {
+struct CharacterListTopLevelDictionary: Decodable {
     
     let data: Results
 }
 
 struct Results: Decodable {
-    
     let offset: Int
     let results: [Character]
 }
@@ -25,11 +24,13 @@ struct Character: Decodable {
         case characterName = "name"
         case characterImage = "thumbnail"
         case comicsAppearingIn = "comics"
+        case collectionURI
     }
     let characterID: Int
     let characterName: String
     let characterImage: Thumbnail
     let comicsAppearingIn: Comics
+    let collectionURI: String
     
 }
 

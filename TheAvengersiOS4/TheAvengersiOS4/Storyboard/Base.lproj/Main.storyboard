@@ -26,14 +26,43 @@
                                 <rect key="frame" x="0.0" y="236" width="393" height="582"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="characterCell" id="pVV-CC-X5o">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="characterCell" rowHeight="100" id="pVV-CC-X5o" customClass="CharacterListTableViewCell" customModule="TheAvengersiOS4" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pVV-CC-X5o" id="iO2-aj-gFM">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="362.66666666666669" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WPT-N1-bJH">
+                                                    <rect key="frame" x="20" y="11" width="334.66666666666669" height="78"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="(Name)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0z-VI-dYf">
+                                                            <rect key="frame" x="0.0" y="0.0" width="226.66666666666666" height="78"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3YK-dt-cT7">
+                                                            <rect key="frame" x="234.66666666666663" y="0.0" width="100" height="78"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="5Mb-tS-0eQ"/>
+                                                                <constraint firstAttribute="height" constant="100" id="iYY-vh-pa8"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="WPT-N1-bJH" firstAttribute="leading" secondItem="iO2-aj-gFM" secondAttribute="leadingMargin" id="Fvb-tA-Q0k"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="WPT-N1-bJH" secondAttribute="bottom" id="KGb-04-01k"/>
+                                                <constraint firstItem="WPT-N1-bJH" firstAttribute="top" secondItem="iO2-aj-gFM" secondAttribute="topMargin" id="kBT-7T-O4s"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="WPT-N1-bJH" secondAttribute="trailing" id="szo-X4-1zn"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" systemColor="placeholderTextColor"/>
                                         <connections>
+                                            <outlet property="avengerImageLabel" destination="3YK-dt-cT7" id="lRO-vm-x7T"/>
+                                            <outlet property="characterNameLabel" destination="g0z-VI-dYf" id="KTK-fP-c3e"/>
                                             <segue destination="ALK-iu-OCi" kind="show" identifier="characterDetailVC" id="2WI-Ko-xGf"/>
                                         </connections>
                                     </tableViewCell>
@@ -98,6 +127,9 @@
     </scenes>
     <resources>
         <image name="avengers" width="423" height="119"/>
+        <systemColor name="placeholderTextColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

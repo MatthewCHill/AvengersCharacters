@@ -22,11 +22,26 @@ class CharacterListViewController: UIViewController {
     }
     
     // MARK: - Properties
-    
-    
+    var characters: [Character] = []
+    var offset = 0
     
     // MARK: - Functions
-    
+    func fetchCharacterList() {
+        
+        CharacterService.fetchCharacterList(paginationOffset: String(offset)) { [weak self] result in
+            switch result {
+                
+            case .success(let characters):
+                self?.characters = characters
+                DispatchQueue.main.async {
+                    self?.characterListTableView.reloadData()
+                }
+                
+            case .failure(let error):
+                print(error.errorDescription ?? "Unknown Error")
+            }
+        }
+    }
     
 
     /*
@@ -43,11 +58,13 @@ class CharacterListViewController: UIViewController {
 
 extension CharacterListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return characters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "characterCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "characterCell", for: indexPath) as? CharacterListTableViewCell else { return UITableViewCell()}
+        
+        let character = characters[indexPath.row]
         
         return cell
     }

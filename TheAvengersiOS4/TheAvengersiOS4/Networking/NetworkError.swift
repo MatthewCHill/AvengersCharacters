@@ -12,6 +12,7 @@ case invalidURL
 case thrownError(Error)
 case noData
 case unableToDecode
+case emptyArray
     
     var errorDescription: String? {
         switch self {
@@ -24,6 +25,8 @@ case unableToDecode
             return "No data received from the network fetch."
         case .unableToDecode:
             return "Unable to decode model object from data."
+        case .emptyArray:
+            return " Recipe returned an empty array."
         }
     }
 }
