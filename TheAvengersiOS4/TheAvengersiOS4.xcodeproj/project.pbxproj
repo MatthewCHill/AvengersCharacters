@@ -16,6 +16,7 @@
 		34C3B1EF29AFF60100B1B295 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3B1EE29AFF60100B1B295 /* CharacterDetailViewController.swift */; };
 		34C3B1F329AFF69400B1B295 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3B1F229AFF69400B1B295 /* Constants.swift */; };
 		34C3B1F529AFF6FC00B1B295 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3B1F429AFF6FC00B1B295 /* NetworkError.swift */; };
+		34C3B1F729AFFD2E00B1B295 /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3B1F629AFFD2E00B1B295 /* Characters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		34C3B1EE29AFF60100B1B295 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
 		34C3B1F229AFF69400B1B295 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		34C3B1F429AFF6FC00B1B295 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		34C3B1F629AFFD2E00B1B295 /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		34C3B1F029AFF67000B1B295 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				34C3B1F629AFFD2E00B1B295 /* Characters.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34C3B1F329AFF69400B1B295 /* Constants.swift in Sources */,
+				34C3B1F729AFFD2E00B1B295 /* Characters.swift in Sources */,
 				34C3B1D629AFF2AD00B1B295 /* AppDelegate.swift in Sources */,
 				34C3B1EF29AFF60100B1B295 /* CharacterDetailViewController.swift in Sources */,
 				34C3B1F529AFF6FC00B1B295 /* NetworkError.swift in Sources */,
