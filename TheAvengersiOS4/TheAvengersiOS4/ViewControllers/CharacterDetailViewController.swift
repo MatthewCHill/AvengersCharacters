@@ -19,9 +19,35 @@ class CharacterDetailViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        comicListTableView.dataSource = self
+        comicListTableView.delegate = self
+        updateUI()
     }
     
-
+    // MARK: - Properties
+    var character: Character?
+    
+    
+    // MARK: - Functions
+    
+    func updateUI() {
+        guard let character = character else {return}
+        CharacterService.fetchCharacterImage(for: character) { [weak self] result in
+            switch result {
+                
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self?.characterPictureImageView.image = image
+                    self?.characterNameLabel.text = character.characterName
+                    self?.comicsLabel.text = "Appears in \(character.comicsAppearingIn.available) Comics"
+                }
+            case .failure(let error):
+                print(error.errorDescription ?? "Unknown Error")
+            }
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 
@@ -32,4 +58,20 @@ class CharacterDetailViewController: UIViewController {
     }
     */
 
+}
+
+// MARK: - Extension
+extension CharacterDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return character?.comicsAppearingIn.available ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = comicListTableView.dequeueReusableCell(withIdentifier: "comicCell", for: indexPath)
+        
+        
+        return cell
+    }
+    
+    
 }

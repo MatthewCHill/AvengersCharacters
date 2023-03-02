@@ -68,18 +68,22 @@ class CharacterListViewController: UIViewController {
         }
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination. "characterDetailVC"
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "characterDetailVC" {
+            guard let index = characterListTableView.indexPathForSelectedRow,
+                  let destinationVC = segue.destination as? CharacterDetailViewController else {return}
+            let characterToSend = characters[index.row]
+            destinationVC.character = characterToSend
+        }
     }
-    */
+    
 
 }
-
+// MARK: - Extension
 extension CharacterListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return characters.count
