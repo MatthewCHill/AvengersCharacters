@@ -19,11 +19,16 @@ class CharacterListViewController: UIViewController {
         super.viewDidLoad()
         characterListTableView.delegate = self
         characterListTableView.dataSource = self
+        fetchCharacterList()
+        setUpActivityIndicator()
+        stopAnimatingAndReloadData()
     }
     
     // MARK: - Properties
+    var topLevel: CharacterListTopLevelDictionary?
     var characters: [Character] = []
     var offset = 0
+    var activityIndicator = UIActivityIndicatorView()
     
     // MARK: - Functions
     func fetchCharacterList() {
@@ -31,8 +36,9 @@ class CharacterListViewController: UIViewController {
         CharacterService.fetchCharacterList(paginationOffset: String(offset)) { [weak self] result in
             switch result {
                 
-            case .success(let characters):
-                self?.characters = characters
+            case .success(let topLevel):
+                self?.topLevel = topLevel
+                self?.characters = topLevel.data.results
                 DispatchQueue.main.async {
                     self?.characterListTableView.reloadData()
                 }
@@ -40,6 +46,23 @@ class CharacterListViewController: UIViewController {
             case .failure(let error):
                 print(error.errorDescription ?? "Unknown Error")
             }
+        }
+    }
+    
+    func setUpActivityIndicator() {
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
+        self.view.addSubview(activityIndicator)
+        self.view.isUserInteractionEnabled = false
+        activityIndicator.startAnimating()
+    }
+    
+    func stopAnimatingAndReloadData() {
+        DispatchQueue.main.async {
+            self.characterListTableView.reloadData()
+            self.activityIndicator.stopAnimating()
+            self.view.isUserInteractionEnabled = true
         }
     }
     
@@ -65,9 +88,28 @@ extension CharacterListViewController: UITableViewDelegate, UITableViewDataSourc
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "characterCell", for: indexPath) as? CharacterListTableViewCell else { return UITableViewCell()}
         
         let character = characters[indexPath.row]
+        cell.fetchCharacterImage(forCharacter: character)
+        cell.updateUI(forCharacter: character)
         
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+            
+            if indexPath.row == characters.count - 1 {
+                offset += 100
+                CharacterService.fetchCharacterList(paginationOffset: String(offset)) { [weak self] result in
+                    switch result {
+                    case .success(let topLevel):
+                        self?.topLevel = topLevel
+                        self?.characters.append(contentsOf: topLevel.data.results)
+                        DispatchQueue.main.async {
+                            self?.characterListTableView.reloadData()
+                        }
+                    case .failure(let error):
+                        print(error.errorDescription ?? "Unknown Error")
+                    }
+                }
+            }
+        }
 }

@@ -102,9 +102,9 @@
 		34C3B1EB29AFF48D00B1B295 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				34C3B1FA29B00A6300B1B295 /* CustomView */,
-				34C3B1EC29AFF4AE00B1B295 /* CharacterListViewController.swift */,
 				34C3B1EE29AFF60100B1B295 /* CharacterDetailViewController.swift */,
+				34C3B1EC29AFF4AE00B1B295 /* CharacterListViewController.swift */,
+				34C3B1FA29B00A6300B1B295 /* CustomView */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

@@ -24,13 +24,11 @@ struct Character: Decodable {
         case characterName = "name"
         case characterImage = "thumbnail"
         case comicsAppearingIn = "comics"
-        case collectionURI
     }
     let characterID: Int
     let characterName: String
     let characterImage: Thumbnail
     let comicsAppearingIn: Comics
-    let collectionURI: String
     
 }
 

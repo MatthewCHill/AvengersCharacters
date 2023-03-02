@@ -74,6 +74,8 @@ struct CharacterService {
     static func fetchCharacter(forCharacter: Character, completion: @escaping (Result<Character, NetworkError>) -> Void) {
         guard let baseURL = URL(string: Constants.AvengersURL.baseURL) else { completion(.failure(.invalidURL)); return}
         var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
+        urlComponents?.path.append(contentsOf: "/\(forCharacter.characterID)")
+        
         let timestampQuery = URLQueryItem(name: Constants.UrlQueryComponents.timeStampQueryKey, value: Constants.UrlQueryComponents.timeStampQueryValue)
         let apiKeyQuery = URLQueryItem(name: Constants.UrlQueryComponents.apiKeyKey, value: Constants.UrlQueryComponents.apiKeyValue)
         let hashQuery = URLQueryItem(name: Constants.UrlQueryComponents.hashQueryKey, value: Constants.UrlQueryComponents.hashQueryValue)
