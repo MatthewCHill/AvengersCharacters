@@ -10,7 +10,7 @@ import UIKit
 
 
 class CharacterListTableViewCell: UITableViewCell {
-
+    
     // MARK: - Outlets
     
     @IBOutlet weak var avengerImageLabel: UIImageView!
@@ -25,6 +25,7 @@ class CharacterListTableViewCell: UITableViewCell {
     }
     
     func fetchCharacterImage(forCharacter character: Character) {
+        characterNameLabel.text = character.characterName
         CharacterService.fetchCharacterImage(for: character) { [weak self] result in
             switch result {
                 
@@ -37,21 +38,36 @@ class CharacterListTableViewCell: UITableViewCell {
             }
         }
     }
-    
-    func updateUI(forCharacter character: Character) {
-        CharacterService.fetchCharacter(forCharacter: character) { [weak self] result in
-            switch result {
-                
-            case .success(let character):
-                DispatchQueue.main.async {
-                    self?.characterNameLabel.text = character.characterName
-                }
-            case .failure(let error):
-                print(error.errorDescription ?? "Unknown Error")
-            }
-        }
-    }
-    
-    
-    
 }
+        
+        
+//        CharacterService.fetchCharacterImage(for: character) { [weak self] result in
+//            switch result {
+//
+//            case .success(let character):
+//                DispatchQueue.main.async {
+//                    self?.avengerImageLabel.image = character
+//                }
+//            case .failure(let error):
+//                print(error.errorDescription ?? "Unknown Error")
+//            }
+//        }
+    
+    
+//    func updateUI(forCharacter character: Character) {
+//        CharacterService.fetchCharacter(forCharacter: character) { [weak self] result in
+//            switch result {
+//                
+//            case .success(let character):
+//                DispatchQueue.main.async {
+//                    self?.characterNameLabel.text = character.characterName
+//                }
+//            case .failure(let error):
+//                print(error.errorDescription ?? "Unknown Error")
+//            }
+//        }
+//    }
+    
+    
+    
+

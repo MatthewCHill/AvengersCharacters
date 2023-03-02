@@ -38,7 +38,9 @@ class CharacterListViewController: UIViewController {
                 
             case .success(let topLevel):
                 self?.topLevel = topLevel
-                self?.characters = topLevel.data.results
+                self?.characters = topLevel.data.results.filter({ character in
+                    !character.characterImage.path.contains("image_not_available") && !character.characterImage.imageExtension.contains("gif")
+                })
                 DispatchQueue.main.async {
                     self?.characterListTableView.reloadData()
                 }
@@ -66,7 +68,6 @@ class CharacterListViewController: UIViewController {
         }
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -89,7 +90,6 @@ extension CharacterListViewController: UITableViewDelegate, UITableViewDataSourc
         
         let character = characters[indexPath.row]
         cell.fetchCharacterImage(forCharacter: character)
-        cell.updateUI(forCharacter: character)
         
         return cell
     }
@@ -102,7 +102,10 @@ extension CharacterListViewController: UITableViewDelegate, UITableViewDataSourc
                     switch result {
                     case .success(let topLevel):
                         self?.topLevel = topLevel
-                        self?.characters.append(contentsOf: topLevel.data.results)
+                        let newCharacters = topLevel.data.results.filter({ character in
+                            !character.characterImage.path.contains("image_not_available") && !character.characterImage.imageExtension.contains("gif")
+                        })
+                        self?.characters.append(contentsOf: newCharacters)
                         DispatchQueue.main.async {
                             self?.characterListTableView.reloadData()
                         }
