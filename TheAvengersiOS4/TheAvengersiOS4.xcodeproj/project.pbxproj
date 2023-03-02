@@ -21,6 +21,7 @@
 		34C3B1FC29B00AA400B1B295 /* CharacterListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3B1FB29B00AA400B1B295 /* CharacterListTableViewCell.swift */; };
 		34C3B20429B152BD00B1B295 /* CharacterComicListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3B20329B152BD00B1B295 /* CharacterComicListTableViewCell.swift */; };
 		34C3B20629B1555400B1B295 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3B20529B1555400B1B295 /* Comic.swift */; };
+		34C3B20829B15C2F00B1B295 /* ComicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C3B20729B15C2F00B1B295 /* ComicService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		34C3B1FB29B00AA400B1B295 /* CharacterListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListTableViewCell.swift; sourceTree = "<group>"; };
 		34C3B20329B152BD00B1B295 /* CharacterComicListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterComicListTableViewCell.swift; sourceTree = "<group>"; };
 		34C3B20529B1555400B1B295 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
+		34C3B20729B15C2F00B1B295 /* ComicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				34C3B1F229AFF69400B1B295 /* Constants.swift */,
 				34C3B1F429AFF6FC00B1B295 /* NetworkError.swift */,
 				34C3B1F829B005F600B1B295 /* CharacterService.swift */,
+				34C3B20729B15C2F00B1B295 /* ComicService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34C3B1F329AFF69400B1B295 /* Constants.swift in Sources */,
+				34C3B20829B15C2F00B1B295 /* ComicService.swift in Sources */,
 				34C3B1F729AFFD2E00B1B295 /* CharactersList.swift in Sources */,
 				34C3B1FC29B00AA400B1B295 /* CharacterListTableViewCell.swift in Sources */,
 				34C3B1D629AFF2AD00B1B295 /* AppDelegate.swift in Sources */,

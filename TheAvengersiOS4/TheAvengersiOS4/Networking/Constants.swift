@@ -13,12 +13,14 @@ struct Constants {
     struct AvengersURL {
         
         static let baseURL = "https://gateway.marvel.com/v1/public/characters"
+        static let comicPath = "/comics"
     }
     
     struct UrlQueryComponents {
         
         static let limitQueryKey = "limit"
         static let limitQueryValue = "20"
+        static let comicLimitQueryValue = "100"
         
         static let offsetQueryKey = "offset"
         

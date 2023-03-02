@@ -110,4 +110,5 @@ struct CharacterService {
         }.resume()
     }
     
+    
 }
