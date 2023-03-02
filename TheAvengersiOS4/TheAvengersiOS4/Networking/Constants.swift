@@ -18,7 +18,7 @@ struct Constants {
     struct UrlQueryComponents {
         
         static let limitQueryKey = "limit"
-        static let limitQueryValue = "100"
+        static let limitQueryValue = "20"
         
         static let offsetQueryKey = "offset"
         

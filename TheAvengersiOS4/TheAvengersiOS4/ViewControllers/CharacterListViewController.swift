@@ -97,7 +97,7 @@ extension CharacterListViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
             
             if indexPath.row == characters.count - 1 {
-                offset += 100
+                offset += 20
                 CharacterService.fetchCharacterList(paginationOffset: String(offset)) { [weak self] result in
                     switch result {
                     case .success(let topLevel):
