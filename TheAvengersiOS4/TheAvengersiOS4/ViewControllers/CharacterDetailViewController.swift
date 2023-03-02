@@ -8,11 +8,17 @@
 import UIKit
 
 class CharacterDetailViewController: UIViewController {
-
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var characterPictureImageView: UIImageView!
+    @IBOutlet weak var characterNameLabel: UILabel!
+    @IBOutlet weak var comicsLabel: UILabel!
+    @IBOutlet weak var comicListTableView: UITableView!
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
 
