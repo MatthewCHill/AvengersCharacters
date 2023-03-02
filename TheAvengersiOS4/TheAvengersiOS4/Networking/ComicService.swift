@@ -9,7 +9,7 @@ import UIKit
 
 struct ComicService {
     
-    static func fetchComicList(forCharacter character: Character, completion: @escaping(Result<[Comic], NetworkError>) -> Void) {
+    static func fetchComicList(forCharacter character: Character, completion: @escaping(Result<ComicTopLevelDict, NetworkError>) -> Void) {
         
         guard let baseURL = URL(string: Constants.AvengersURL.baseURL) else { completion(.failure(.invalidURL)); return}
         var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
@@ -23,7 +23,7 @@ struct ComicService {
         urlComponents?.queryItems = [limitQuery, timestampQuery, apiKeyQuery, hashQuery]
         
         guard let finalURL = urlComponents?.url else {completion(.failure(.invalidURL)); return}
-        print("Character List final URL: \(finalURL)")
+        print("Comic List final URL: \(finalURL)")
         
         URLSession.shared.dataTask(with: finalURL) { data, response, error in
             
@@ -39,9 +39,10 @@ struct ComicService {
             
             do {
                 let topLevel = try JSONDecoder().decode(ComicTopLevelDict.self, from: data)
-                completion(.success(topLevel.data.resutls))
+                completion(.success(topLevel))
             } catch {
                 completion(.failure(.unableToDecode))
+                print("from fetchComicList data.")
                 return
             }
         }.resume()

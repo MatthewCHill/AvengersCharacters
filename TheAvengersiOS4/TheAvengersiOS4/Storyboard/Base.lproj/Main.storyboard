@@ -133,12 +133,42 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="comicCell" id="1Cf-iA-C4r" customClass="CharacterComicListTableViewCell" customModule="TheAvengersiOS4" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="146.33332824707031"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Cf-iA-C4r" id="BjJ-sP-FF0">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="146.33332824707031"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SBh-Du-WWD">
+                                                    <rect key="frame" x="22" y="12.999999999999993" width="349" height="120.33333333333331"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NdL-oB-xrl">
+                                                            <rect key="frame" x="0.0" y="0.3333333333333357" width="80" height="120"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="120" id="Vo8-I9-2T3"/>
+                                                                <constraint firstAttribute="width" secondItem="NdL-oB-xrl" secondAttribute="height" multiplier="2:3" id="w57-Tm-Xhs"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(comic title)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WkT-IK-gvX">
+                                                            <rect key="frame" x="88" y="47" width="261" height="26.333333333333329"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SBh-Du-WWD" firstAttribute="leading" secondItem="BjJ-sP-FF0" secondAttribute="leadingMargin" constant="2" id="TrV-Fi-wr1"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="SBh-Du-WWD" secondAttribute="trailing" constant="2" id="chW-f4-t6T"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="SBh-Du-WWD" secondAttribute="bottom" constant="2" id="wgR-kQ-xdV"/>
+                                                <constraint firstItem="SBh-Du-WWD" firstAttribute="top" secondItem="BjJ-sP-FF0" secondAttribute="topMargin" constant="2" id="ybp-Xd-AwB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="comicImageView" destination="NdL-oB-xrl" id="ID0-ZH-4fA"/>
+                                            <outlet property="comicTitleLabel" destination="WkT-IK-gvX" id="F5s-BD-vzz"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

@@ -8,11 +8,22 @@
 import Foundation
 
 struct ComicTopLevelDict: Decodable {
-    let data: DataDict
+    
+    private enum CodingKeys: String, CodingKey {
+        case topLevelDict = "data"
+    }
+    
+    let topLevelDict: DataDict
 }
 
 struct DataDict: Decodable {
-    let resutls: [Comic]
+    
+    private enum CodingKeys: String, CodingKey {
+        case offset
+        case comics = "results"
+    }
+    let offset: Int
+    let comics: [Comic]
 }
 
 struct Comic: Decodable {

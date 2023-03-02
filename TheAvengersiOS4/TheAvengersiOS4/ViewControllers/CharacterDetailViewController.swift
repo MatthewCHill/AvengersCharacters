@@ -22,10 +22,13 @@ class CharacterDetailViewController: UIViewController {
         comicListTableView.dataSource = self
         comicListTableView.delegate = self
         updateUI()
+        
     }
     
     // MARK: - Properties
     var character: Character?
+    var comicDic: ComicTopLevelDict?
+    var comics: [Comic] = []
     
     
     // MARK: - Functions
@@ -40,6 +43,23 @@ class CharacterDetailViewController: UIViewController {
                     self?.characterPictureImageView.image = image
                     self?.characterNameLabel.text = character.characterName
                     self?.comicsLabel.text = "Appears in \(character.comicsAppearingIn.available) Comics"
+                }
+            case .failure(let error):
+                print(error.errorDescription ?? "Unknown Error")
+            }
+        }
+        fetchComicList(forCharacter: character)
+    }
+    
+    func fetchComicList(forCharacter character: Character) {
+        ComicService.fetchComicList(forCharacter: character) { [weak self] result in
+            switch result {
+                
+            case .success(let topLevel):
+                self?.comicDic = topLevel
+                self?.comics = topLevel.topLevelDict.comics
+                DispatchQueue.main.async {
+                    self?.comicListTableView.reloadData()
                 }
             case .failure(let error):
                 print(error.errorDescription ?? "Unknown Error")
@@ -63,12 +83,14 @@ class CharacterDetailViewController: UIViewController {
 // MARK: - Extension
 extension CharacterDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return character?.comicsAppearingIn.available ?? 0
+        return comics.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = comicListTableView.dequeueReusableCell(withIdentifier: "comicCell", for: indexPath)
+        guard let cell = comicListTableView.dequeueReusableCell(withIdentifier: "comicCell", for: indexPath) as? CharacterComicListTableViewCell else {return UITableViewCell()}
         
+        let comic = comics[indexPath.row]
+        cell.fetchComicImage(forComic: comic)
         
         return cell
     }
