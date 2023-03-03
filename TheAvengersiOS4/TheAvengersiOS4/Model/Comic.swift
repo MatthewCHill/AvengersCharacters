@@ -20,9 +20,11 @@ struct DataDict: Decodable {
     
     private enum CodingKeys: String, CodingKey {
         case offset
+        case count
         case comics = "results"
     }
     let offset: Int
+    let count: Int
     let comics: [Comic]
 }
 

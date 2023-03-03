@@ -9,7 +9,7 @@ import UIKit
 
 struct ComicService {
     
-    static func fetchComicList(forCharacter character: Character, completion: @escaping(Result<ComicTopLevelDict, NetworkError>) -> Void) {
+    static func fetchComicList(paginationOffset offset: String, forCharacter character: Character, completion: @escaping(Result<ComicTopLevelDict, NetworkError>) -> Void) {
         
         guard let baseURL = URL(string: Constants.AvengersURL.baseURL) else { completion(.failure(.invalidURL)); return}
         var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
@@ -18,9 +18,10 @@ struct ComicService {
         
         let limitQuery = URLQueryItem(name: Constants.UrlQueryComponents.limitQueryKey, value: Constants.UrlQueryComponents.comicLimitQueryValue)
         let timestampQuery = URLQueryItem(name: Constants.UrlQueryComponents.timeStampQueryKey, value: Constants.UrlQueryComponents.timeStampQueryValue)
+        let offsetQuery = URLQueryItem(name: Constants.UrlQueryComponents.offsetQueryKey, value: offset)
         let apiKeyQuery = URLQueryItem(name: Constants.UrlQueryComponents.apiKeyKey, value: Constants.UrlQueryComponents.apiKeyValue)
         let hashQuery = URLQueryItem(name: Constants.UrlQueryComponents.hashQueryKey, value: Constants.UrlQueryComponents.hashQueryValue)
-        urlComponents?.queryItems = [limitQuery, timestampQuery, apiKeyQuery, hashQuery]
+        urlComponents?.queryItems = [limitQuery, offsetQuery, timestampQuery, apiKeyQuery, hashQuery]
         
         guard let finalURL = urlComponents?.url else {completion(.failure(.invalidURL)); return}
         print("Comic List final URL: \(finalURL)")

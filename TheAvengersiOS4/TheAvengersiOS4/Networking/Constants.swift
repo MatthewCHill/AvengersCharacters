@@ -20,7 +20,7 @@ struct Constants {
         
         static let limitQueryKey = "limit"
         static let limitQueryValue = "20"
-        static let comicLimitQueryValue = "100"
+        static let comicLimitQueryValue = "50"
         
         static let offsetQueryKey = "offset"
         

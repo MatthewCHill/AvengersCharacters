@@ -29,6 +29,7 @@ class CharacterDetailViewController: UIViewController {
     var character: Character?
     var comicDic: ComicTopLevelDict?
     var comics: [Comic] = []
+    var offset = 0
     
     
     // MARK: - Functions
@@ -52,7 +53,7 @@ class CharacterDetailViewController: UIViewController {
     }
     
     func fetchComicList(forCharacter character: Character) {
-        ComicService.fetchComicList(forCharacter: character) { [weak self] result in
+        ComicService.fetchComicList(paginationOffset: String(offset), forCharacter: character) { [weak self] result in
             switch result {
                 
             case .success(let topLevel):
@@ -95,5 +96,26 @@ extension CharacterDetailViewController: UITableViewDelegate, UITableViewDataSou
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        guard let character = character else { return }
+        guard let comicDic = comicDic else { return }
+        
+        if indexPath.row == comics.count - 1 && comics.count <= comicDic.topLevelDict.count {
+            offset += 50
+            ComicService.fetchComicList(paginationOffset: String(offset), forCharacter: character) { [weak self] result in
+                switch result {
+                    
+                case .success(let topLevel):
+                    self?.comicDic = topLevel
+                    self?.comics.append(contentsOf: topLevel.topLevelDict.comics)
+                    DispatchQueue.main.async {
+                        self?.comicListTableView.reloadData()
+                    }
+                case .failure(let error):
+                    print(error.errorDescription ?? "Uknown Error")
+                }
+            }
+        }
+    }
 }
